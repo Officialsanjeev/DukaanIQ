@@ -1,0 +1,8 @@
+{
+  "name": "Remix DukaanIQ - AI Powered Ultimate POS \u0026 Retail ERP",
+  "description": "Next-generation AI retail operations platform combining high-speed POS checkout, inventory forecasting, dynamic pricing, GST automation, and grounded Gemini business copilot.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

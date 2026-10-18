@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-display: 'Inter', system-ui, sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* Playful Trust: Retail Edition Color Tokens */
+    --color-retail-bg: #FBFAF7;
+    --color-retail-surface: #FFFFFF;
+    --color-retail-ink: #1E293B;
+    --color-retail-text: #0F172A;
+    --color-retail-muted: #64748B;
+    --color-retail-primary: #4F46E5;
+    --color-retail-secondary: #7C3AED;
+    --color-retail-border: #E2E8F0;
+
+    /* Shadows */
+    --shadow-trust: 0 4px 20px -2px rgba(79, 70, 229, 0.10);
+    --shadow-trust-hover: 0 10px 25px -5px rgba(79, 70, 229, 0.15), 0 8px 10px -6px rgba(79, 70, 229, 0.10);
+    --shadow-pop: 4px 4px 0 0 #1E293B;
+    --shadow-pop-hover: 6px 6px 0 0 #1E293B;
+    --shadow-pop-active: 2px 2px 0 0 #1E293B;
+    --shadow-pop-pink: 6px 6px 0 0 #F472B6;
+    --shadow-pop-amber: 4px 4px 0 0 #FBBF24;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--color-retail-text);
+    background-color: var(--color-retail-bg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-heading {
+    font-family: var(--font-display);
+  }
+}
+
+/* Playful Trust Token Utility Classes */
+.shadow-trust {
+  box-shadow: var(--shadow-trust);
+}
+
+.shadow-trust-hover:hover {
+  box-shadow: var(--shadow-trust-hover);
+}
+
+.shadow-pop {
+  box-shadow: var(--shadow-pop);
+}
+
+.shadow-pop-hover:hover {
+  box-shadow: var(--shadow-pop-hover);
+}
+
+.shadow-pop-active:active {
+  box-shadow: var(--shadow-pop-active);
+}
+
+.shadow-pop-pink {
+  box-shadow: var(--shadow-pop-pink);
+}
+
+.shadow-pop-amber {
+  box-shadow: var(--shadow-pop-amber);
+}
+
+/* Bouncy cubic-bezier for interactive elements */
+.transition-bounce {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition-duration: 300ms;
+}
+
+/* Receipt Zigzag Edge styling */
+.receipt-edge {
+  position: relative;
+}
+.receipt-edge::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 8px;
+  background-image: radial-gradient(circle, transparent, transparent 50%, #ffffff 50%, #ffffff 100%);
+  background-size: 16px 16px;
+  background-position: -8px -8px;
+}
+
+.receipt-zigzag-border {
+  background-image: linear-gradient(135deg, #1E293B 25%, transparent 25%),
+                    linear-gradient(225deg, #1E293B 25%, transparent 25%);
+  background-position: 0 0;
+  background-size: 12px 12px;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ESC/POS Thermal Receipt Print Styles */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #thermal-receipt, #thermal-receipt * {
+    visibility: visible;
+  }
+  #thermal-receipt {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 78mm;
+    margin: 0;
+    padding: 2mm;
+    background: white;
+    color: black;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  @page {
+    size: 80mm auto;
+    margin: 0;
+  }
+}
